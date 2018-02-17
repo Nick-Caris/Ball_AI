@@ -1,9 +1,11 @@
+package shapes;
+
 import processing.core.PApplet;
 
 public abstract class Shape {
-    protected float x, y;
+    float x, y;
     private float vx, vy, ax, ay;
-    protected int kleur;
+    int color;
 
     public Shape(float x, float y){
         this.x = x;
@@ -14,8 +16,8 @@ public abstract class Shape {
 
     public void takeStep() {
         if (!standStill()) {
-            conformAccelaration();
-            confurmSpeed();
+            conformAcceleration();
+            conformSpeed();
         }
     }
 
@@ -24,7 +26,7 @@ public abstract class Shape {
         this.vy = vy;
     }
 
-    public void setVersnelling(float ax, float ay) {
+    public void setAcceleration(float ax, float ay) {
         this.ax = ax;
         this.ay = ay;
     }
@@ -35,16 +37,16 @@ public abstract class Shape {
     public boolean standStill() {
         return (vx == 0 && vy == 0 && ax == 0 && ay == 0);
     }
-    public void setColor(int kleur) {
-        this.kleur = kleur;
+    public void setColor(int color) {
+        this.color = color;
     }
 
-    private void conformAccelaration() {
+    private void conformAcceleration() {
         vx += ax;
         vy += ay;
     }
 
-    private void confurmSpeed() {
+    private void conformSpeed() {
         x += vx;
         y += vy;
     }
